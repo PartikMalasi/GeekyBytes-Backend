@@ -24,7 +24,7 @@ const connectDB = async () => {
 
 //middlewares
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors());
 app.use(cookieParser());
 app.use("/api/upload", imageroute);
 app.use("/api/auth", authroute);
