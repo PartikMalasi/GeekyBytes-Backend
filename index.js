@@ -24,7 +24,8 @@ const connectDB = async () => {
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors( {  credentials: true, // This allows credentials (cookies, authorization headers, TLS client certificates)  
+               }));
 app.use(cookieParser());
 app.use("/api/upload", imageroute);
 app.use("/api/auth", authroute);
