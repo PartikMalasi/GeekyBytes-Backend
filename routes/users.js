@@ -44,8 +44,6 @@ router.put("/:id", verifyToken, async (req, res) => {
 
     res
       .cookie("jwtToken", token, {
-        httpOnly: true,
-        secure: true,
         sameSite: "None",
       })
       .status(200)
