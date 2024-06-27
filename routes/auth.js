@@ -51,7 +51,11 @@ router.post("/login", async (req, res) => {
       }
     );
     const { password, ...info } = user._doc;
-    res.cookie("jwtToken", token).status(200).json(info);
+    res.cookie("jwtToken", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    });
   } catch (err) {
     res.status(500).json(err);
   }

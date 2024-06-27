@@ -42,7 +42,14 @@ router.put("/:id", verifyToken, async (req, res) => {
       }
     );
 
-    res.cookie("jwtToken", token).status(200).json(updateUser);
+    res
+      .cookie("jwtToken", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
+      .status(200)
+      .json(updateUser);
   } catch (err) {
     res.status(500).json(err);
   }
