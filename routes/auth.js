@@ -56,6 +56,8 @@ router.post("/login", async (req, res) => {
       secure: true,
       sameSite: "None",
     });
+
+    res.status(200).json(info); // Send a response to the client
   } catch (err) {
     res.status(500).json(err);
   }
