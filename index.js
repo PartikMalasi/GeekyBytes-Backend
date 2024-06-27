@@ -23,8 +23,18 @@ const connectDB = async () => {
 //image upload
 
 //middlewares
+const corsOptions = {
+    origin: (origin, callback) => {
+        // Allow requests from any origin
+        callback(null, true);
+    },
+    credentials: true, // This allows credentials (cookies, authorization headers, TLS client certificates)
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+
 app.use(cookieParser());
 app.use("/api/upload", imageroute);
 app.use("/api/auth", authroute);
